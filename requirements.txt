@@ -1,0 +1,2 @@
+replicate==0.13.0
+gradio==3.45.2
