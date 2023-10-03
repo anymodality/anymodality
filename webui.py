@@ -5,11 +5,7 @@ import time
 import replicate
 
 # Chatbot demo with multimodal input (text, markdown, LaTeX, code blocks, image, audio, & video). Plus shows support for streaming text.
-# models = [
-#     "daanelson/minigpt-4",
-#     "joehoover/mplug-owl",
-#     "joehoover/instructblip-vicuna13b",
-# ]
+
 os.environ["REPLICATE_API_TOKEN"] = "r8_FYo7y8bU58DjKR7sDnJzjG0sGS9bDpu29ntlX"
 
 
@@ -61,7 +57,9 @@ def bot(model_choice, history, image_path):
             model_url,
             input={"prompt": prompt, "img": image},
         )
-        response = next(output)
+        response = ""
+        for item in output:
+            response += item
 
     for character in response:
         history[-1][1] += character
