@@ -7,7 +7,7 @@ GPTV-Arena is an Arena WebUI for MultiModal language models.
 ## Installation
 
 ```
-pip install -r requirements.txtx
+pip install -r requirements.txt
 ```
 
 ## Usage
