@@ -36,7 +36,11 @@ class Task:
         if llm_type == LLMType.REPLICATE:
             from anymodality.llms.replicate import ReplicateLLM
 
-        llm_object = ReplicateLLM()
+            llm_object = ReplicateLLM()
+        elif llm_type == LLMType.SAGEMAKER:
+            from anymodality.llms.sagemaker import SagemakerLLM
+
+            llm_object = SagemakerLLM()
 
         input = input if kwargs is None else {**input, **kwargs}
 

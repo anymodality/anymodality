@@ -3,7 +3,7 @@ from anymodality import Task
 
 
 class TestClassVQAReplicate:
-    def test_dialog1(self):
+    def test_dialog_replicate(self):
         task = Task("visual_question_answering")
         response = task(
             llm="replicate",
@@ -16,3 +16,16 @@ class TestClassVQAReplicate:
         )
         print(response)
         # assert response == "Yes, you can park at the spot right now."
+
+    def test_dialog_sagemaker(self):
+        task = Task("visual_question_answering")
+        response = task(
+            llm="sagemaker",
+            model="huggingface-pytorch-inference-2023-10-23-06-30-14-719",
+            input={
+                "image": "https://raw.githubusercontent.com/haotian-liu/LLaVA/main/images/llava_logo.png",
+                "question": "Describe the image and color details.",
+            },
+            stream=False,
+        )
+        print(response)
