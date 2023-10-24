@@ -12,5 +12,5 @@ pip install -r requirements.txt
 
 ## Usage
 ```
-python webui.py
+python tools/webui.py
 ```
