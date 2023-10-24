@@ -13,6 +13,7 @@ gradio = "^3.50.2"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.1"
+pytest = "^7.4.2"
 
 [tool.ruff]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
