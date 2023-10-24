@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any, Iterator, Union, List
+from typing import Any, Iterator
 
 from anymodality.llms.base import LLMType
 

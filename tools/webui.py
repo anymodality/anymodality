@@ -103,10 +103,10 @@ with gr.Blocks() as demo:
     gr.Examples(
         examples=[
             [
-                f"static/parking.jpg",
+                "static/parking.jpg",
                 "It is Wednesday at 4 pm. Can I park at the spot right now? Tell me in 1 line.",
             ],
-            [f"static/2b827.png", "Tell me the text in image."],
+            ["static/2b827.png", "Tell me the text in image."],
         ],
         inputs=[imagebox, textbox],
     )

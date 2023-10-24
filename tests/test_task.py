@@ -1,4 +1,3 @@
-import pytest
 from anymodality import Task
 
 
