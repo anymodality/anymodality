@@ -1,6 +1,6 @@
-# gptv-arena
+# AnyModality
 
-GPTV-Arena is an Arena WebUI for MultiModal language models.
+AnyModality is an open-source library to simplify MultiModal LLM inference and deployment.
 
 ![screenshot](./static/screenshot.png)
 
