@@ -2,7 +2,7 @@
 
 AnyModality is an open-source library to simplify MultiModal LLM inference and deployment.
 
-![screenshot](./static/screenshot.png)
+![screenshot](docs/assets/screenshot.png)
 
 ## Installation
 

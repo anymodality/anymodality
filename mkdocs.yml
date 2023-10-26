@@ -1,0 +1,65 @@
+site_name: AnyModality
+repo_url: https://github.com/anymodality/anymodality
+
+nav:
+- Overview: index.md
+# - getting_started.md
+- developer_notes.md
+- Integrations:
+  - sagemaker.md
+
+# extra_css:
+# - assets/versions.css
+# extra_javascript:
+# - assets/versions.js
+
+theme:
+  # custom_dir: overrides
+  favicon: assets/logo.jpg
+  font:
+    text: Work Sans
+  logo: assets/logo.jpg
+  name: material
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    primary: teal
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - media: '(prefers-color-scheme: dark)'
+    primary: teal
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+
+plugins:
+  - mkdocstrings
+  - search
+  # - tags
+
+# extra:
+#   version:
+#     provider: mike
+
+markdown_extensions:
+  - markdown_include.include
+  - codehilite:
+      css_class: highlight
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: anymodality
+      repo: anymodality
+  - pymdownx.snippets
+  - pymdownx.superfences

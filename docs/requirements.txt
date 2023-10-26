@@ -1,0 +1,8 @@
+mkdocs==1.5.3
+mkdocs-material==9.4.6
+markdown-include==0.8.1
+# pygments
+Jinja2==3.1.2
+Markdown==3.5
+pymdown-extensions==10.3.1
+mike==1.1.2
