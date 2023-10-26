@@ -20,7 +20,7 @@ KNOWN_MODELS = {
     },
     "llava": {
         "model_str": "yorickvp/llava-13b:2facb4a474a0462c15041b78b1ad70952ea46b5ec6ad29583c0b29dbd4249591",
-        "streaming_mode": StreamingSupportType.CAN_STREAMING,
+        "streaming_mode": StreamingSupportType.ONLY_STREAMING,
         "input_schema": {},
         "output_schema": {},
     }
