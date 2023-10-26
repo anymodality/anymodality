@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "anymodality"
-version = "0.1.0"
+version = "0.1.1"
 description = "Make running Multi-Modal LLM easy."
-authors = ["Joey ZHOU <greyjoeyzhou@gmail.com>", "Tom GOU <liltom.eth@gmail.com>"]
+authors = [
+    "Joey ZHOU <greyjoeyzhou@gmail.com>",
+    "Tom GOU <liltom.eth@gmail.com>",
+]
 license = "MIT"
 homepage = "https://github.com/anymodality/anymodality"
 repository = "https://github.com/anymodality/anymodality"
@@ -56,7 +59,7 @@ exclude = [
 per-file-ignores = {}
 
 # Same as Black.
-line-length = 120
+line-length = 119
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
