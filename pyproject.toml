@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anymodality"
-version = "0.1.0"
+version = "0.1.1"
 description = "Make running Multi-Modal LLM easy."
 authors = ["Joey ZHOU <greyjoeyzhou@gmail.com>", "Tom GOU <liltom.eth@gmail.com>"]
 license = "MIT"

@@ -8,6 +8,8 @@ from anymodality import Task
 # Chatbot demo with multimodal input (text, image).
 def create_demo(llm, model, stream):
     def bot(history, image_path):
+        # set response as none
+        # for newest conversation (user_input, response)
         history[-1][1] = ""
         prompt = get_prompt(history)
         # print(prompt)
