@@ -5,7 +5,7 @@ AnyModality is an open-source library to simplify MultiModal LLM inference and d
 ## Features
 
 - Supporting MultiModal LLM API providers: [Replicate](https://replicate.com/), [Sagemaker](https://aws.amazon.com/sagemaker/)...
-- Supporting MultiModal LLM models:  [LLaVA-1.5](https://github.com/haotian-liu/LLaVA), [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4)...
+- Supporting MultiModal LLM models:  [LLaVA-1.5](https://github.com/haotian-liu/LLaVA), [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4), [InstructBLIP](https://github.com/salesforce/LAVIS)...
 
 ## Contents
 
@@ -14,6 +14,7 @@ AnyModality is an open-source library to simplify MultiModal LLM inference and d
 - [Usage](#usage)
   - [Call MultiModal LLM Endpoint](#call-multimodal-llm-endpoint)
   - [Start WebUI for Visual Question Answering](#start-webui-for-visual-question-answering)
+- [Supporting Models](#supporting-models)
 
 ## Install
 
@@ -78,3 +79,15 @@ python -m anymodality.tools.webui --llm replicate --model daanelson/minigpt-4:b9
 ```
 
 ![screenshot](docs/assets/screenshot.png)
+
+## Supporting Models
+
+| Models                                                | Replicate                                                    | SageMaker                                                    | Huggingface  |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------ |
+| [LLaVA-1.5](https://github.com/haotian-liu/LLaVA)     | [llava-13b](https://replicate.com/yorickvp/llava-13b)        | self-hosting, [deployment](https://huggingface.co/anymodality/llava-v1.5-7b) | self-hosting |
+| [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4) | [minigpt-4](https://replicate.com/daanelson/minigpt-4)       | self-hosting                                                 | self-hosting |
+| [InstructBLIP](https://github.com/salesforce/LAVIS)   | [instructblip-vicuna13b](https://replicate.com/joehoover/instructblip-vicuna13b) | self-hosting                                                 | self-hosting |
+| [mPLUG-Owl](https://github.com/X-PLUG/mPLUG-Owl)      | [mplug-owl)](https://replicate.com/joehoover/mplug-owl)      | self-hosting                                                 | self-hosting |
+
+
+
