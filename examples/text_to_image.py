@@ -11,9 +11,9 @@ def sample_stabilityai():
             "text_prompts": [{"text": "A lighthouse on a cliff"}],
         },
     )
-    # response: list of image bytes
+    # response: list of image bytes str
     for i, image in enumerate(response):
-        with open(f"./out/v1_txt2img_{i}.png", "wb") as f:
+        with open(f"./v1_txt2img_{i}.png", "wb") as f:
             f.write(base64.b64decode(image))
 
 
@@ -27,11 +27,28 @@ def sample_stabilityai_pil():
             "samples": 1,
         },
     )
-    # response: list of image bytes
+    # response: list of image bytes str
     from anymodality.tools.image import imgstr_to_PIL
 
     img_pil = imgstr_to_PIL(response[0])
     img_pil.show()
+
+
+def sample_openai_url():
+    task = Task("text_to_image")
+    response = task(
+        llm="openai",
+        model="https://api.openai.com/v1/images/generations",
+        input={
+            "prompt": "A cute baby sea otter",
+            "n": 2,
+            "size": "1024x1024",
+        },
+    )
+    # response: list of image urls
+    for i, img_url in enumerate(response):
+        print(i)
+        print(img_url)
 
 
 if __name__ == "__main__":
@@ -39,3 +56,5 @@ if __name__ == "__main__":
     sample_stabilityai()
     print("StabilityAI text-to-image and convert to pil sample")
     sample_stabilityai_pil()
+    print("OpenAI text-to-image sample")
+    sample_openai_url()

@@ -48,6 +48,10 @@ class Task:
             from anymodality.llms.stabilityai import StabilityAILLM
 
             llm_object = StabilityAILLM()
+        elif llm_type == LLMType.OPENAI:
+            from anymodality.llms.openai import OpenAILLM
+
+            llm_object = OpenAILLM()
 
         input = input if kwargs is None else {**input, **kwargs}
 

@@ -10,6 +10,7 @@ class LLMType(Enum):
     HUGGINGFACE = 2
     SAGEMAKER = 3
     STABILITYAI = 4
+    OPENAI = 5
 
     @classmethod
     def get_type(cls, llm_name: str):
@@ -24,6 +25,8 @@ class LLMType(Enum):
             llm_type = LLMType.SAGEMAKER
         elif "stability" in llm_name:
             llm_type = LLMType.STABILITYAI
+        elif "openai" in llm_name:
+            llm_type = LLMType.OPENAI
         else:
             raise Exception("Unknown llm: " + llm_name)
             # llm_type = LLMType.UNKNOWN
