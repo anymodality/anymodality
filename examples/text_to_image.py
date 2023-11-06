@@ -6,7 +6,6 @@ def sample_stabilityai():
     task = Task("text_to_image")
     response = task(
         llm="stabilityai",
-        model="https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image",
         input={
             "text_prompts": [{"text": "A lighthouse on a cliff"}],
         },

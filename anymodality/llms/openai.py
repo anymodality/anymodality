@@ -42,6 +42,8 @@ class OpenAILLM(BaseLLM):
             headers=headers,
             json=input,
         )
+        if response.status_code != 200:
+            raise Exception("Non-200 response: " + str(response.text))
 
         data = response.json()
         data_list = data["data"]

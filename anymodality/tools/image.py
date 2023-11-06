@@ -28,3 +28,16 @@ def imgstr_to_bytes(data: str) -> bytes:
     """
     image64 = base64.b64decode(data)
     return image64
+
+
+def imgbytes_to_pil(data: bytes) -> Image:
+    """Convert image bytes to PIL Image.
+
+    Args:
+        data: image bytes
+
+    Returns:
+        PIL Image
+    """
+    img_pil = Image.open(BytesIO(data))
+    return img_pil

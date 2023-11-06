@@ -46,3 +46,7 @@ class BaseLLM(ABC):
     @abstractmethod
     def text_to_image(self):
         pass
+
+    @abstractmethod
+    def image_to_image(self):
+        pass
