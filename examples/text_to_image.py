@@ -51,6 +51,37 @@ def sample_openai_url():
         print(img_url)
 
 
+def sample_replicate():
+    task = Task("text_to_image")
+    response = task(
+        llm="replicate",
+        model="stability-ai/sdxl:2a865c9a94c9992b6689365b75db2d678d5022505ed3f63a5f53929a31a46947",
+        input={
+            "prompt": "An astronaut riding a rainbow unicorn",
+            "num_outputs": 2,
+        },
+    )
+    # response: list of image urls
+    for i, img_url in enumerate(response):
+        print(i)
+        print(img_url)
+
+
+def sample_replicate_without_version():
+    task = Task("text_to_image")
+    response = task(
+        llm="replicate",
+        model="stability-ai/sdxl",
+        input={
+            "prompt": "An astronaut riding a rainbow unicorn",
+        },
+    )
+    # response: list of image urls
+    for i, img_url in enumerate(response):
+        print(i)
+        print(img_url)
+
+
 if __name__ == "__main__":
     print("StabilityAI text-to-image sample")
     sample_stabilityai()
@@ -58,3 +89,6 @@ if __name__ == "__main__":
     sample_stabilityai_pil()
     print("OpenAI text-to-image sample")
     sample_openai_url()
+    print("Replicate text-to-image sample")
+    sample_replicate()
+    sample_replicate_without_version()
