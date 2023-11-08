@@ -17,11 +17,11 @@ class SagemakerLLM(BaseLLM):
         # Create a low-level client representing Amazon SageMaker Runtime
         self.sagemaker_runtime = boto3.client("sagemaker-runtime")
 
-    def complete():
+    def text_generation():
         pass
 
     # @staticmethod
-    def visual_question_answer(
+    def vision(
         self,
         model: str,
         input: dict,

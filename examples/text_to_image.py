@@ -33,14 +33,30 @@ def sample_stabilityai_pil():
     img_pil.show()
 
 
-def sample_openai_url():
+def sample_openai_url_dalle3():
     task = Task("text_to_image")
     response = task(
         llm="openai",
-        model="https://api.openai.com/v1/images/generations",
         input={
+            "model": "dall-e-3",
             "prompt": "A cute baby sea otter",
+            "size": "1024x1024",
             "n": 2,
+        },
+    )
+    # response: list of image urls
+    for i, img_url in enumerate(response):
+        print(i)
+        print(img_url)
+
+
+def sample_openai_url_dalle2():
+    task = Task("text_to_image")
+    response = task(
+        llm="openai",
+        input={
+            "model": "dall-e-2",
+            "prompt": "A cute baby sea otter",
             "size": "1024x1024",
         },
     )
@@ -87,7 +103,8 @@ if __name__ == "__main__":
     print("StabilityAI text-to-image and convert to pil sample")
     sample_stabilityai_pil()
     print("OpenAI text-to-image sample")
-    sample_openai_url()
+    sample_openai_url_dalle3()
+    sample_openai_url_dalle2()
     print("Replicate text-to-image sample")
     sample_replicate()
     sample_replicate_without_version()

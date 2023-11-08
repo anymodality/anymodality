@@ -1,5 +1,6 @@
 import os
 import requests
+from typing import List
 
 from anymodality.llms.base import BaseLLM
 
@@ -12,33 +13,60 @@ class OpenAILLM(BaseLLM):
                 "Please set your 'OPENAI_API_KEY' as an environment variable."
             )
 
-    def complete():
+    def text_generation():
         pass
 
     # @staticmethod
-    def visual_question_answer(
+    def vision(
         self,
-        model: str,
-        input: dict,
-        stream: bool = False,
-    ):
-        pass
-
-    def text_to_image(
-        self,
-        model: str = "https://api.openai.com/v1/images/generations",
+        model: str = "gpt-4-vision-preview",
         input: dict = None,
         stream: bool = False,
     ):
         if stream:
-            print("Stream is not supporting for OpenAI text-to-image Task.")
+            raise Exception("Stream is not supporting for OpenAI gpt-4-vision-preview.")
+        url = "https://api.openai.com/v1/chat/completions"
+        api_key = os.getenv("OPENAI_API_KEY")
+
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        }
+        # process duplicate "model" argument
+        if "model" not in input:
+            input["model"] = model
+        response = requests.post(
+            url,
+            headers=headers,
+            json=input,
+        )
+        if response.status_code != 200:
+            raise Exception("Non-200 response: " + str(response.text))
+
+        data = response.json()
+        return data["choices"][0]["message"]["content"]
+
+    def text_to_image(
+        self,
+        model: str = "dall-e-3",
+        input: dict = None,
+        stream: bool = False,
+    ):
+        if stream:
+            raise Exception("Stream is not supporting for OpenAI text-to-image Task.")
+
+        url = "https://api.openai.com/v1/images/generations"
         api_key = os.getenv("OPENAI_API_KEY")
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}",
         }
+        # process duplicate "model" argument
+        if "model" not in input:
+            input["model"] = model
+        print(input)
         response = requests.post(
-            model,
+            url,
             headers=headers,
             json=input,
         )
@@ -56,3 +84,13 @@ class OpenAILLM(BaseLLM):
         else:
             imgurl_list = [data["url"] for data in data_list]
             return imgurl_list
+
+    def image_to_image(
+        self,
+        model: str,
+        input: dict = None,
+        stream: bool = False,
+    ) -> List[str]:
+        pass
+        # if stream:
+        #     print("Stream is not supporting for OpenAI image-to-image Task.")

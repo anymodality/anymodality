@@ -13,10 +13,10 @@ class StabilityAILLM(BaseLLM):
                 "Please set your 'STABILITY_API_KEY' as an environment variable."
             )
 
-    def complete():
+    def text_generation():
         pass
 
-    def visual_question_answer(
+    def vision(
         self,
         model: str,
         input: dict,
@@ -31,7 +31,9 @@ class StabilityAILLM(BaseLLM):
         stream: bool = False,
     ) -> List[str]:
         if stream:
-            print("Stream is not supporting for StabilityAI text-to-image Task.")
+            raise Exception(
+                "Stream is not supporting for StabilityAI text-to-image Task."
+            )
         if model is None:
             model = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"
         api_key = os.getenv("STABILITY_API_KEY")
@@ -63,7 +65,9 @@ class StabilityAILLM(BaseLLM):
         stream: bool = False,
     ) -> List[str]:
         if stream:
-            print("Stream is not supporting for StabilityAI image-to-image Task.")
+            raise Exception(
+                "Stream is not supporting for StabilityAI image-to-image Task."
+            )
         if model is None:
             model = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/image-to-image"
         api_key = os.getenv("STABILITY_API_KEY")

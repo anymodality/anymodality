@@ -18,7 +18,7 @@ class TaskType(Enum):
         task_name = "".join(letter for letter in task_name if letter.isalnum())
         if "textgeneration" in task_name:
             task_type = TaskType.TextGeneration
-        elif "visualquestionanswering" in task_name:
+        elif "vision" in task_name or "visualquestionanswering" in task_name:
             task_type = TaskType.VisualQuestionAnswering
         elif "texttoimage" in task_name:
             task_type = TaskType.TextToImage
@@ -31,7 +31,7 @@ class TaskType(Enum):
 
 
 class Task:
-    def __init__(self, task_name: str = "visual_question_answering"):
+    def __init__(self, task_name: str = "vision"):
         self.task_name = task_name
         self.task_type = TaskType.get_type(task_name)
 
@@ -64,7 +64,7 @@ class Task:
         input = input if kwargs is None else {**input, **kwargs}
 
         if self.task_type == TaskType.VisualQuestionAnswering:
-            response = llm_object.visual_question_answer(model, input, stream)
+            response = llm_object.vision(model, input, stream)
         elif self.task_type == TaskType.TextToImage:
             response = llm_object.text_to_image(model, input, stream)
         elif self.task_type == TaskType.ImageToImage:

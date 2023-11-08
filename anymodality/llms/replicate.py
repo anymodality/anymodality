@@ -37,11 +37,11 @@ class ReplicateLLM(BaseLLM):
             )
         self.model_dict = {}
 
-    def complete():
+    def text_generation():
         pass
 
     # @staticmethod
-    def visual_question_answer(
+    def vision(
         self,
         model: str,
         input: dict,
