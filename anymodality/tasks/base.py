@@ -9,6 +9,7 @@ class TaskType(Enum):
     TextGeneration = 1
     VisualQuestionAnswering = 2
     TextToImage = 3
+    ImageToImage = 4
 
     @classmethod
     def get_type(cls, task_name: str):
@@ -17,10 +18,12 @@ class TaskType(Enum):
         task_name = "".join(letter for letter in task_name if letter.isalnum())
         if "textgeneration" in task_name:
             task_type = TaskType.TextGeneration
-        elif "visualquestionanswering" in task_name:
+        elif "vision" in task_name or "visualquestionanswering" in task_name:
             task_type = TaskType.VisualQuestionAnswering
         elif "texttoimage" in task_name:
             task_type = TaskType.TextToImage
+        elif "imagetoimage" in task_name:
+            task_type = TaskType.ImageToImage
         else:
             raise Exception("Unknown task: " + task_name)
             # task_type = TaskType.UNKNOWN
@@ -28,12 +31,17 @@ class TaskType(Enum):
 
 
 class Task:
-    def __init__(self, task_name: str = "visual_question_answering"):
+    def __init__(self, task_name: str = "vision"):
         self.task_name = task_name
         self.task_type = TaskType.get_type(task_name)
 
     def __call__(
-        self, llm: str, model: str, input: dict, stream: bool = False, **kwargs: Any
+        self,
+        llm: str,
+        model: str = None,
+        input: dict = None,
+        stream: bool = False,
+        **kwargs: Any
     ) -> Any | Iterator[Any] | List[Any]:
         llm_type = LLMType.get_type(llm)
         if llm_type == LLMType.REPLICATE:
@@ -56,9 +64,11 @@ class Task:
         input = input if kwargs is None else {**input, **kwargs}
 
         if self.task_type == TaskType.VisualQuestionAnswering:
-            response = llm_object.visual_question_answer(model, input, stream)
+            response = llm_object.vision(model, input, stream)
         elif self.task_type == TaskType.TextToImage:
             response = llm_object.text_to_image(model, input, stream)
+        elif self.task_type == TaskType.ImageToImage:
+            response = llm_object.image_to_image(model, input, stream)
         else:
             raise Exception("Unknown task_type: " + self.task_type)
 

@@ -36,13 +36,17 @@ class LLMType(Enum):
 class BaseLLM(ABC):
     # API for https://api.openai.com/v1/chat/completion
     @abstractmethod
-    def complete(self):
+    def text_generation(self):
         pass
 
     @abstractmethod
-    def visual_question_answer(self):
+    def vision(self):
         pass
 
     @abstractmethod
     def text_to_image(self):
+        pass
+
+    @abstractmethod
+    def image_to_image(self):
         pass
